@@ -15,12 +15,129 @@
   </head>
   <body>
     <div class="page">
-      <header class="header"></header>
+      <header class="header">
+        <img src="./images/Logo.svg" alt="Spot Logo" class="header__logo" />
+      </header>
       <main class="content">
-        <section class="profile"></section>
-        <section class="cards"></section>
+        <section class="profile page__section">
+          <img
+            src="./images/avatar.jpg"
+            alt="Bessie Coleman"
+            class="profile__avatar"
+          />
+          <div class="profile__column">
+            <h1 class="profile__name">Bessie Coleman</h1>
+            <p class="profile__description">Civil Aviator</p>
+            <button type="button" class="profile__edit-btn">
+              <a href="#">
+                <img
+                  src="./images/Edit Icon.svg"
+                  alt="Pencil Icon"
+                  class="button"
+                />Edit Profile</a
+              >
+            </button>
+          </div>
+          <button type="button" class="profile__add-btn">
+            <a href="#">
+              <img src="./images/plusicon.svg" alt="Plus Icon" class="button" />
+              New Post</a
+            >
+          </button>
+        </section>
+
+        <section class="cards page__section">
+          <ul class="cards__list">
+            <li class="card">
+              <img
+                src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg"
+                alt="Val Thorens photo"
+                class="card__image"
+              />
+              <div class="card__content">
+                <p class="card__title">Val Thorens</p>
+                <a href="#"
+                  ><button type="button" class="card__like-btn"></button
+                ></a>
+              </div>
+            </li>
+
+            <li class="card">
+              <img
+                src="./images/2-photo-by-ceiline-from-pexels.jpg"
+                alt="Restaurant terrace photo"
+                class="card__image"
+              />
+              <div class="card__content">
+                <p class="card__title">Restaurant terrace</p>
+                <a href="#"
+                  ><button type="button" class="card__like-btn"></button
+                ></a>
+              </div>
+            </li>
+
+            <li class="card">
+              <img
+                src="./images/3-photo-by-tubanur-dogan-from-pexels.jpg"
+                alt="An outdoor cafe photo"
+                class="card__image"
+              />
+              <div class="card__content">
+                <p class="card__title">An outdoor cafe</p>
+                <a href="#"
+                  ><button type="button" class="card__like-btn"></button
+                ></a>
+              </div>
+            </li>
+
+            <li class="card">
+              <img
+                src="./images/4-photo-by-maurice-laschet-from-pexels.jpg"
+                alt="A long bridge photo"
+                class="card__image"
+              />
+              <div class="card__content">
+                <p class="card__title">A very long bridge, over the forest</p>
+                <a href="#"
+                  ><button type="button" class="card__like-btn"></button
+                ></a>
+              </div>
+            </li>
+
+            <li class="card">
+              <img
+                src="./images/5-photo-by-van-anh-nguyen-from-pexels.jpg"
+                alt="Tunnel photo"
+                class="card__image"
+              />
+              <div class="card__content">
+                <p class="card__title">Tunnel with morning light</p>
+                <a href="#"
+                  ><button type="button" class="card__like-btn"></button
+                ></a>
+              </div>
+            </li>
+
+            <li class="card">
+              <img
+                src="./images/6-photo-by-moritz-feldmann-from-pexels.jpg"
+                alt="Mountain house photo"
+                class="card__image"
+              />
+              <div class="card__content">
+                <p class="card__title">Mountain house</p>
+                <a href="#"
+                  ><button type="button" class="card__like-btn"></button
+                ></a>
+              </div>
+            </li>
+          </ul>
+        </section>
       </main>
-      <footer class="footer"></footer>
+
+      <footer class="footer">
+        <div class="footer__copyright"><p>2025 &copy; Spots</p></div>
+      </footer>
     </div>
   </body>
 </html>
