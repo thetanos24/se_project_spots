@@ -1,12 +1,13 @@
 .cards {
+  justify-content: center;
   padding-bottom: 40px;
   margin: 0;
-  border-bottom: 1px solid #212121;
+  border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 .cards__list {
   margin: 0;
   list-style-type: none;
-  padding-top: 20px;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, 413px);
   justify-content: center;

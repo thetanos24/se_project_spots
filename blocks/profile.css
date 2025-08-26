@@ -47,9 +47,9 @@
 .profile__edit-btn {
   display: flex;
   gap: 8px;
-  font-size: ;
-  line-height: ;
-  font-weight: ;
+  font-size: 16px;
+  line-height: 100%;
+  font-weight: 500;
   margin-top: auto;
   padding: 0;
   width: 107.34px;
@@ -80,10 +80,10 @@
   width: 149px;
   height: 52px;
   padding: 0;
-  font-size: ;
-  line-height: ;
-  font-weight: ;
-  color: #fff;
+  font-size: 16px;
+  line-height: 100%;
+  font-weight: 500;
+  color: #fcf5e5;
 }
 
 .profile__add-btn:hover {
