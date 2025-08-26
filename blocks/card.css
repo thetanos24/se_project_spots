@@ -1,19 +1,20 @@
 .card {
-  width: 413px;
-  margin: 0 60px;
+  max-width: 100%;
+  width: 100%;
 }
 
 .card__image {
   width: 413px;
   height: 413px;
   margin-bottom: 12px;
-  border-radius: 16px;
+  border-radius: 8px;
   object-fit: cover;
   display: block;
 }
 
 .card__title {
   margin: 0;
+  max-width: 353px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -27,7 +28,6 @@
   overflow: hidden;
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: 0%;
   color: #212121;
   justify-content: space-between;
   margin: 0;
@@ -53,6 +53,12 @@
     margin: 0;
   }
 
+  .card__title {
+    max-width: 235px;
+    font-size: ;
+    line-height: ;
+  }
+
   .card__image {
     width: 288px;
     height: 288px;
@@ -60,7 +66,6 @@
 
   .card__content {
     padding: 0;
-    margin-bottom: 20px;
     max-width: 288px;
   }
 }
