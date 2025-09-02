@@ -49,7 +49,6 @@
   margin: 0 0 32px;
   font-size: 32px;
   font-weight: 500;
-  font-style: medium;
 }
 
 .modal__form {
@@ -73,7 +72,6 @@
   font-size: 20px;
   margin: 8px 0 0;
   font-weight: 500;
-  font-style: medium;
 }
 
 .modal__input::placeholder {
