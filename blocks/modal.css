@@ -1,0 +1,138 @@
+.modal {
+  visibility: hidden;
+  background-color: #00000080;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_is-opened {
+  visibility: visible;
+}
+
+.modal__container {
+  position: relative;
+  max-width: 730px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 32px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__close-btn {
+  position: absolute;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  top: 32px;
+  right: 50px;
+  border: none;
+  background-image: url(../images/closeicon.svg);
+  background-color: transparent;
+  opacity: 40%;
+}
+
+.modal__close-btn:hover {
+  cursor: pointer;
+  opacity: 100%;
+  transition: 0.5s;
+}
+
+.modal__title {
+  margin: 0 0 32px;
+  font-size: 32px;
+  font-weight: 500;
+  font-style: medium;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__label {
+  font-size: 16px;
+  opacity: 70%;
+  margin: 0 0 32px;
+}
+
+.modal__input {
+  display: block;
+  width: 100%;
+  padding: 16px 12px;
+  border-radius: 8px;
+  border: 1px solid #212121;
+  opacity: 40%;
+  font-size: 20px;
+  margin: 8px 0 0;
+  font-weight: 500;
+  font-style: medium;
+}
+
+.modal__input::placeholder {
+  color: #212121;
+}
+
+.modal__input:hover {
+  opacity: 100%;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.modal__submit-btn {
+  color: #fcf5ef;
+  font-size: 16px;
+  background-color: #212121;
+  border: none;
+  border-radius: 8px;
+  padding: 18px 58px;
+  max-width: 156px;
+  align-items: center;
+}
+
+.modal__submit-btn:hover {
+  cursor: pointer;
+  opacity: 80%;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 627px) {
+  .modal__container {
+    padding: 12px 12px;
+    width: 100%;
+    position: relative;
+    left: 10px;
+    right: 10px;
+  }
+
+  .modal__title {
+    font-size: 20px;
+    padding: 10px 0;
+  }
+
+  .modal__close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  .modal__label {
+    margin: 0 0 24px;
+  }
+
+  .modal__input {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .modal__submit-btn {
+    max-width: 100%;
+  }
+}
