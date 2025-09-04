@@ -42,7 +42,7 @@
 .modal__close-btn:hover {
   cursor: pointer;
   opacity: 100%;
-  transition: 0.5s;
+  transition: 0.1s;
 }
 
 .modal__title {
