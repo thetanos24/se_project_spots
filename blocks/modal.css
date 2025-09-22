@@ -4,6 +4,7 @@
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
   background-color: #00000080;
   position: fixed;
+  padding: 0 10px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -43,6 +44,7 @@
   right: 50px;
   border: none;
   background-image: url(../images/closeicon.svg);
+  cursor: pointer;
   background-color: transparent;
   opacity: 40%;
   align-items: center;
@@ -56,6 +58,7 @@
   right: -52.5px;
   transition: 0.1s;
   opacity: 100%;
+  cursor: pointer;
 }
 
 .modal__close-btn_type_preview:hover {

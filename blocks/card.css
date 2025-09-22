@@ -10,6 +10,7 @@
   border-radius: 8px;
   object-fit: cover;
   display: block;
+  cursor: pointer;
 }
 
 .card__title {
@@ -35,7 +36,6 @@
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-  opacity: 100%;
   width: 32px;
   height: 32px;
   position: absolute;
