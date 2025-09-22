@@ -30,7 +30,8 @@
 }
 
 .card__like-btn {
-  background-image: url(../images/LikeIcon.svg);
+  background-image: url(../images/likeicon.svg);
+  background-repeat: no-repeat;
   width: 23px;
   height: 20px;
   border: none;
@@ -42,6 +43,15 @@
   opacity: 100%;
   transition: 0.5s;
   cursor: pointer;
+}
+
+.card__like-btn_active {
+  background-image: url(../images/likedactive.svg);
+  opacity: 100%;
+}
+
+.card__like-btn_active:hover {
+  opacity: 40%;
 }
 
 @media screen and (max-width: 627px) {
