@@ -111,6 +111,11 @@
   transition: 0.5s;
 }
 
+.modal__input_type_error {
+  border: 1px solid #ff0000;
+  opacity: 100%;
+}
+
 .modal__error {
   display: block;
   color: #ff0000;
