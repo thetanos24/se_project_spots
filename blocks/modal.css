@@ -125,6 +125,7 @@
 }
 
 .modal__submit-btn {
+  cursor: pointer;
   color: #fcf5ef;
   font-size: 16px;
   background-color: #212121;
@@ -139,6 +140,11 @@
   cursor: pointer;
   opacity: 80%;
   transition: 0.5s;
+}
+
+.modal__submit-btn:disabled {
+  cursor: pointer;
+  opacity: 80%;
 }
 
 .modal__image-container {
