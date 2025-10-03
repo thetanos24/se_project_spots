@@ -142,7 +142,7 @@
   transition: 0.5s;
 }
 
-.modal__submit-btn:disabled {
+.modal__submit-btn_disabled {
   cursor: pointer;
   opacity: 80%;
 }
