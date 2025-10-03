@@ -38,6 +38,12 @@ const disableButton = (buttonElement) => {
   buttonElement.classList.add(".modal__submit-btn:disabled");
 };
 
+const resetValidation = (formEl, inputList) => {
+  inputList.forEach((input) => {
+    hideInputError(formEl, input);
+  });
+};
+
 const setEventListeners = (formEl) => {
   const inputList = Array.from(formEl.querySelectorAll(".modal__input"));
   const buttonElement = formEl.querySelector(".modal__submit-btn");
