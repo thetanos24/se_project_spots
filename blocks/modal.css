@@ -5,6 +5,7 @@
   background-color: #00000080;
   position: fixed;
   padding: 0 10px;
+  margin: 0 auto;
   top: 0;
   right: 0;
   bottom: 0;
@@ -144,7 +145,7 @@
 
 .modal__submit-btn_disabled {
   cursor: pointer;
-  opacity: 80%;
+  background-color: rgba(33, 33, 33, 0.5);
 }
 
 .modal__image-container {
@@ -182,8 +183,6 @@
     padding: 12px 12px;
     width: 100%;
     position: relative;
-    left: 10px;
-    right: 10px;
   }
 
   .modal__title {
@@ -208,7 +207,7 @@
 
   .modal__input {
     font-size: 16px;
-    width: 100%;
+    max-width: stretch;
   }
 
   .modal__submit-btn {
@@ -221,5 +220,49 @@
 
   .modal__image {
     max-width: unset;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .modal__container {
+    padding: 8px 8px;
+    max-width: 300px;
+    margin: 0;
+  }
+
+  .modal__title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .modal__close-btn {
+    top: 8px;
+    right: 8px;
+  }
+
+  .modal__close-btn_type_preview {
+    top: -42px;
+    right: 0;
+  }
+
+  .modal__label {
+    font-size: 14px;
+    margin: 0 0 16px;
+  }
+
+  .modal__input {
+    font-size: 14px;
+    max-width: 267px;
+    padding: 12px 8px;
+  }
+
+  .modal__submit-btn {
+    font-size: 14px;
+    padding: 12px 40px;
+  }
+
+  .modal__caption {
+    font-size: 14px;
+    padding: 4px 6px;
   }
 }
