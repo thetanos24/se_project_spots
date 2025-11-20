@@ -4,67 +4,98 @@ export default class Api {
     this._headers = headers;
   }
 
+  // Private method to check response status and parse JSON
   _checkResponse(res) {
-    if (!res.ok) {
-      return res.text().then((text) => {
-        throw new Error(`Error ${res.status}: ${text}`);
-      });
+    if (res.ok) {
+      return res.json();
     }
-    return res.json();
+    // Throw an Error object for proper rejection handling
+    return res.text().then((text) => {
+      throw new Error(`Error ${res.status}: ${text}`);
+    });
   }
 
-  changeLikeStatus(cardId, like) {
-    console.log(`Changing like status for card ${cardId}, like: ${like}`);
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: like ? "PUT" : "DELETE",
+  // Private helper for standardizing fetch calls
+  _fetch(path, options = {}) {
+    const url = `${this._baseUrl}${path}`;
+    const fetchOptions = {
+      ...options,
       headers: this._headers,
-    })
+    };
+
+    if (options.body && typeof options.body !== "string") {
+      fetchOptions.body = JSON.stringify(options.body);
+    }
+
+    return fetch(url, fetchOptions)
       .then(this._checkResponse)
       .catch((err) => {
-        console.error("Error with like status change:", err);
+        console.error(
+          `API Request Failed: ${options.method || "GET"} ${path}`,
+          err
+        );
         throw err;
       });
   }
 
+  // Private helper to get a single card
+  _getCard(cardId) {
+    return this._fetch(`/cards/${cardId}`);
+  }
+
+  // --- API METHODS ---
+
   getAppInfo() {
-    return Promise.all([
-      fetch(`${this._baseUrl}/users/me`, { headers: this._headers }).then(
-        this._checkResponse
-      ),
-      fetch(`${this._baseUrl}/cards`, { headers: this._headers }).then(
-        this._checkResponse
-      ),
-    ]);
+    return Promise.all([this._fetch("/users/me"), this._fetch("/cards")]);
+  }
+
+  changeLikeStatus(cardId, like) {
+    const method = like ? "PUT" : "DELETE";
+
+    // 1. Perform the like/unlike action
+    return (
+      this._fetch(`/cards/${cardId}/likes`, {
+        method: method,
+      })
+        // 2. FIXED: Cleanly chain the .then() to the fetch call
+        .then(() => {
+          // Fetch the full, updated card after the action succeeds.
+          return this._getCard(cardId);
+        })
+        .catch((err) => {
+          console.error(
+            `Failed to change like status for card ${cardId}:`,
+            err
+          );
+          throw err;
+        })
+    );
   }
 
   addCard(data) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._fetch("/cards", {
       method: "POST",
-      headers: this._headers,
-      body: JSON.stringify(data),
-    }).then(this._checkResponse);
+      body: data,
+    });
   }
 
   removeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+    return this._fetch(`/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
-    }).then(this._checkResponse);
+    });
   }
 
   editUserInfo(data) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._fetch("/users/me", {
       method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify(data),
-    }).then(this._checkResponse);
+      body: data,
+    });
   }
 
   editAvatar(url) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._fetch("/users/me/avatar", {
       method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({ avatar: url }),
-    }).then(this._checkResponse);
+      body: { avatar: url },
+    });
   }
 }
