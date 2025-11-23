@@ -8,11 +8,9 @@ import {
   disableButton,
 } from "../scripts/validation.js";
 
-
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-
     authorization: "4dfaab43-99e9-4353-9f81-55b2f4334e00",
     "Content-Type": "application/json",
   },
@@ -21,7 +19,6 @@ const api = new Api({
 let currentUserId;
 let selectedCard;
 let selectedCardId;
-
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
@@ -37,6 +34,7 @@ const previewCaptionEl = previewModal.querySelector(".modal__caption");
 
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteCancelBtn = deleteModal.querySelector(".modal__cancel-btn");
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
@@ -53,7 +51,7 @@ const newPostCaptionInput = newPostModal.querySelector("#card-caption-input");
 const newPostImageInput = newPostModal.querySelector("#card-image-input");
 
 const avatarModal = document.querySelector("#avatar-modal");
-const avatarInput = document.querySelector("#avatar-input");
+const avatarInput = document.querySelector("#profile-avatar-input");
 const avatarForm = avatarModal?.querySelector(".modal__form") ?? null;
 
 function closeModal(modal) {
@@ -82,11 +80,9 @@ function getCardElement(cardData) {
   const likeBtn = cardEl.querySelector(".card__like-btn");
   const deleteBtn = cardEl.querySelector(".card__delete-btn");
 
-
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
   cardTitle.textContent = cardData.name;
-
 
   cardImage.addEventListener("click", () => {
     previewImageEl.src = cardData.link;
@@ -95,50 +91,40 @@ function getCardElement(cardData) {
     openModal(previewModal);
   });
 
+  // --- DELETE LOGIC MODIFIED: ENABLED FOR ALL CARDS ---
+  // We removed the owner check logic here so the button always appears.
+  deleteBtn.classList.remove("card__delete-btn_hidden");
 
-  const isOwner = cardData.owner && cardData.owner._id === currentUserId;
+  deleteBtn.addEventListener("click", () => {
+    selectedCard = cardEl;
+    selectedCardId = cardData._id;
+    openModal(deleteModal);
+  });
+  // ----------------------------------------------------
 
-  if (isOwner) {
-    deleteBtn.addEventListener("click", () => {
-      selectedCard = cardEl;
-      selectedCardId = cardData._id;
-      openModal(deleteModal);
-    });
-  } else {
-
-    deleteBtn?.remove();
-  }
-
-
-  const likesArray = Array.isArray(cardData.likes) ? cardData.likes : [];
+  const likesArray = cardData.likes || [];
 
   if (likesArray.some((user) => user._id === currentUserId)) {
     likeBtn.classList.add("card__like-btn_active");
   }
-
 
   likeBtn.addEventListener("click", () => {
     const isCurrentlyLiked = likeBtn.classList.contains(
       "card__like-btn_active"
     );
     const cardId = cardData._id;
-
     api
       .changeLikeStatus(cardId, !isCurrentlyLiked)
-      .then((updatedCard) => {
-        const isNowLiked = updatedCard.likes.some(
-          (user) => user._id === currentUserId
-        );
-
-        if (isNowLiked) {
-          likeBtn.classList.add("card__like-btn_active");
-        } else {
+      .then((data) => {
+        if (isCurrentlyLiked) {
           likeBtn.classList.remove("card__like-btn_active");
+        } else {
+          likeBtn.classList.add("card__like-btn_active");
         }
       })
-      .catch((err) =>
-        console.error(`Error updating like status for card ${cardId}:`, err)
-      );
+      .catch((err) => {
+        console.error("Like Action Failed:", err);
+      });
   });
 
   return cardEl;
@@ -211,7 +197,10 @@ function handleDeleteSubmit(evt) {
   api
     .removeCard(selectedCardId)
     .then(() => {
-      selectedCard?.remove();
+      if (selectedCard) {
+        selectedCard.remove();
+        selectedCard = null;
+      }
       closeModal(deleteModal);
     })
     .catch((err) => console.error("Error deleting card:", err))
@@ -222,6 +211,7 @@ api
   .getAppInfo()
   .then(([user, cards]) => {
     currentUserId = user._id;
+    console.log("Current User ID:", currentUserId);
 
     profileAvatarEl.src = user.avatar;
     profileNameEl.textContent = user.name;
@@ -262,6 +252,12 @@ if (avatarEditBtn && avatarForm) {
   avatarEditBtn.addEventListener("click", () => {
     resetValidation(avatarForm, settings);
     openModal(avatarModal);
+  });
+}
+
+if (deleteCancelBtn) {
+  deleteCancelBtn.addEventListener("click", () => {
+    closeModal(deleteModal);
   });
 }
 
