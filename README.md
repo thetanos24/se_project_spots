@@ -40,7 +40,7 @@ This webpage is deployed to GitHubpages
 
 ## Video Pitch of Spots:
 
-- [Link to the project video on Google Drive](https://drive.google.com/file/d/1X_Kt40zvaU0YIQLXRJRZsiO31SpmznRQ/view?usp=drive_link)
+- [Link to the project video on Google Drive](https://drive.google.com/file/d/1Y1lIi0aK7mb96sJGs3rKxsYFEeAyYOvK/view?usp=sharing)
 
 ## Photos of Spots Social Media Application
 
