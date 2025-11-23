@@ -38,7 +38,7 @@ This webpage is deployed to GitHubpages
 
 - [Link to the project on Figma](https://www.figma.com/design/mXGZ6wZ4QPKx5KjpHX9QCV/Sprint-9-Project%3A-Spots?node-id=0-1&t=q3sLidv5V6u8hM1F-0)
 
-## Video Overview of design project:
+## Video Pitch of Spots:
 
 - [Link to the project video on Google Drive](https://drive.google.com/file/d/1X_Kt40zvaU0YIQLXRJRZsiO31SpmznRQ/view?usp=drive_link)
 
@@ -54,12 +54,8 @@ This webpage is deployed to GitHubpages
 
 ![Screenshot of desktop view with liked image](./images/readme-images/spots-likestatus.png)
 
-![Recording of desktop view](./images/readme-images/spots-desktopviewpreviewnewpostbuttons.mp4)
-
 ![Screenshot of 627px view](./images/readme-images/spots-627view.png)
 
 ![Screenshot of mobile view](./images/readme-images/spots-mobileview.png)
 
 ![Screenshot of mobile view when previewing an image](./images/readme-images/spots-mobileviewpreview.png)
-
-![Recording of mobile view](./images/readme-images/spots-mobileviewbuttons.mp4)
