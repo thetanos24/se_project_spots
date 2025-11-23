@@ -41,3 +41,25 @@ This webpage is deployed to GitHubpages
 ## Video Overview of design project:
 
 - [Link to the project video on Google Drive](https://drive.google.com/file/d/1X_Kt40zvaU0YIQLXRJRZsiO31SpmznRQ/view?usp=drive_link)
+
+## Photos of Spots Social Media Application
+
+![Screenshot of desktop view](./images/readme-images/spots-desktopview.png)
+
+![Screenshot of desktop view when editing avatar/image ](./images/readme-images/spots-profileavatar.png)
+
+![Screenshot of desktop view when adding new post](./images/readme-images/spots-newpostpopupmodal.png)
+
+![Screenshot of desktop view with delete button](./images/readme-images/spots-deletefunction.png)
+
+![Screenshot of desktop view with liked image](./images/readme-images/spots-likestatus.png)
+
+![Recording of desktop view](./images/readme-images/spots-desktopviewpreviewnewpostbuttons.mp4)
+
+![Screenshot of 627px view](./images/readme-images/spots-627view.png)
+
+![Screenshot of mobile view](./images/readme-images/spots-mobileview.png)
+
+![Screenshot of mobile view when previewing an image](./images/readme-images/spots-mobileviewpreview.png)
+
+![Recording of mobile view](./images/readme-images/spots-mobileviewbuttons.mp4)
