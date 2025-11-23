@@ -6,7 +6,6 @@ export default class Api {
 
   _checkResponse(res) {
     if (res.ok) {
-      // 👇 LOGGING ADDED: Check the console for "Parsed Data"
       return res.json().then((data) => {
         console.log("Parsed API Data:", data);
         return data;

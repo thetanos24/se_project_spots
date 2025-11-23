@@ -6,6 +6,14 @@
 - Figma
 - Images
 
+### Technology used
+
+- Webpack
+- Babel
+- Post CSS
+- API Integration
+- Form Validation
+
 ## Description
 
 In this sprint project I have used Figma to read the design and use HTML and CSS to create a responsive design.

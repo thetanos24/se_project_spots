@@ -91,8 +91,6 @@ function getCardElement(cardData) {
     openModal(previewModal);
   });
 
-  // --- DELETE LOGIC MODIFIED: ENABLED FOR ALL CARDS ---
-  // We removed the owner check logic here so the button always appears.
   deleteBtn.classList.remove("card__delete-btn_hidden");
 
   deleteBtn.addEventListener("click", () => {
@@ -100,7 +98,6 @@ function getCardElement(cardData) {
     selectedCardId = cardData._id;
     openModal(deleteModal);
   });
-  // ----------------------------------------------------
 
   const likesArray = cardData.likes || [];
 
