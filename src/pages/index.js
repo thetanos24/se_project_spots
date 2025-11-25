@@ -110,7 +110,6 @@ function getCardElement(cardData) {
     }
   }
 
-  // Toggling Like Status (PUT/DELETE request)
   likeBtn.addEventListener("click", () => {
     const isLiked = likeBtn.classList.contains("card__like-btn_active");
 
