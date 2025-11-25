@@ -99,29 +99,48 @@ function getCardElement(cardData) {
     openModal(deleteModal);
   });
 
-  const likesArray = cardData.likes || [];
-
-  if (likesArray.some((user) => user._id === currentUserId)) {
+  if (cardData.isLiked) {
     likeBtn.classList.add("card__like-btn_active");
+  } else if (cardData.likes) {
+    const isInitiallyLiked = cardData.likes.some(
+      (user) => user._id === currentUserId
+    );
+    if (isInitiallyLiked) {
+      likeBtn.classList.add("card__like-btn_active");
+    }
   }
 
+  // Toggling Like Status (PUT/DELETE request)
   likeBtn.addEventListener("click", () => {
-    const isCurrentlyLiked = likeBtn.classList.contains(
-      "card__like-btn_active"
-    );
-    const cardId = cardData._id;
+    const isLiked = likeBtn.classList.contains("card__like-btn_active");
+
     api
-      .changeLikeStatus(cardId, !isCurrentlyLiked)
-      .then((data) => {
-        if (isCurrentlyLiked) {
-          likeBtn.classList.remove("card__like-btn_active");
+      .changeLikeStatus(cardData._id, !isLiked)
+      .then((updatedCard) => {
+        if (updatedCard.isLiked !== undefined) {
+          if (updatedCard.isLiked) {
+            likeBtn.classList.add("card__like-btn_active");
+          } else {
+            likeBtn.classList.remove("card__like-btn_active");
+          }
+        } else if (updatedCard.likes) {
+          const isNowLiked = updatedCard.likes.some(
+            (user) => user._id === currentUserId
+          );
+
+          if (isNowLiked) {
+            likeBtn.classList.add("card__like-btn_active");
+          } else {
+            likeBtn.classList.remove("card__like-btn_active");
+          }
         } else {
-          likeBtn.classList.add("card__like-btn_active");
+          console.error(
+            "API response missing necessary fields for updating like status.",
+            updatedCard
+          );
         }
       })
-      .catch((err) => {
-        console.error("Like Action Failed:", err);
-      });
+      .catch((err) => console.error("Error updating like status", err));
   });
 
   return cardEl;
@@ -189,7 +208,7 @@ function handleAddCardSubmit(evt) {
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
   const submitButton = evt.submitter;
-  setButtonText(submitButton, true, "Yes", "Deleting...");
+  setButtonText(submitButton, true, "Delete", "Deleting...");
 
   api
     .removeCard(selectedCardId)
@@ -201,7 +220,7 @@ function handleDeleteSubmit(evt) {
       closeModal(deleteModal);
     })
     .catch((err) => console.error("Error deleting card:", err))
-    .finally(() => setButtonText(submitButton, false, "Yes", "Deleting..."));
+    .finally(() => setButtonText(submitButton, false, "Delete", "Deleting..."));
 }
 
 api
